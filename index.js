@@ -13,11 +13,11 @@ const PORT = environments.port;
 
 app.get("/products", async (req,res)=>{
     try {
-        const sql =  `SELECT * FROM products`;
-        const [rows] = await connection.query(sql);
+        const sql =  `SELECT * FROM productos`;
+        const [rows] = await connection.query(sql)
         res.status(200).json({
             payload: rows,
-            message: rows.lengh === 0 ? "No se encontraron productos" : "Productos encontrados"
+            message: rows.length  === 0 ? "No se encontraron productos" : "Productos encontrados"
         })
     } catch (error) {
         console.error(error.message);
