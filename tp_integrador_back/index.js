@@ -3,9 +3,9 @@ const app = express();
 import connection from "./src/api/database/db.js"; 
 import environments from "./src/api/config/environments.js"; 
 const PORT = environments.port;
-import cors from "cors"; 
+import cors from "cors";
 
-app.use(cors()); 
+app.use(cors());
 app.use(express.json()); 
 
 app.use((req, res, next) => {
@@ -60,7 +60,7 @@ app.post("/products", async (req, res) => {
         const { nombre, imagen, categoria, precio } = req.body;
         console.log(req.body); 
 
-        let sql = "INSERT INTO products (nombre, imagen, categoria, precio) VALUES (?, ?, ?, ?)";
+        let sql = "INSERT INTO productos (nombre, imagen, categoria, precio) VALUES (?, ?, ?, ?)";
 
         let [rows] = await connection.query(sql, [nombre, imagen, categoria, precio]);
 
@@ -84,7 +84,7 @@ app.put("/products", async (req, res) => {
         let { id, nombre, imagen, categoria, precio, activo } = req.body;
 
         let sql = `
-            UPDATE products
+            UPDATE productos
             SET nombre = ?, imagen = ?, categoria = ?, precio = ?
             WHERE id = ?
         `;
