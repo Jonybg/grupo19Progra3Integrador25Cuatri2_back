@@ -5,12 +5,12 @@ const PORT = environments.port;
 import cors from "cors";
 import { loggerUrl } from "./src/api/middlewares/middlewares.js";
 import { productRouter } from "./src/api/routes/index.js";
-
+import { __dirname,join } from "./src/api/utils/index.js";
 
 app.use(cors());
 app.use(express.json()); 
 app.use(loggerUrl);
-
+app.use(express.static(join(__dirname,"src/public")))
 
 app.use("/api/products",productRouter)
 
